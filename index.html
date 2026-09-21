@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#8ed6ff" />
+  <meta name="description" content="Aventura Pixel: un juego romántico de plataformas hecho por Anderson para Alejandra." />
+  <title>Aventura Pixel ❤️ Anderson + Alejandra</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="gameApp" class="app-shell">
+    <header class="topbar">
+      <div class="brand">AVENTURA PIXEL <span>♥</span></div>
+      <div class="top-actions">
+        <button id="soundBtn" class="icon-btn" aria-label="Sonido">♪</button>
+        <button id="pauseBtn" class="icon-btn" aria-label="Pausa">Ⅱ</button>
+        <button id="fullscreenBtn" class="icon-btn" aria-label="Pantalla completa">⛶</button>
+      </div>
+    </header>
+
+    <section class="game-stage" aria-label="Juego de plataformas">
+      <canvas id="game" width="960" height="540"></canvas>
+
+      <div id="startScreen" class="overlay show">
+        <div class="pixel-card hero-card">
+          <span class="badge">UNA AVENTURA HECHA PARA TI</span>
+          <h1>Camino hacia<br><em>Alejandra</em> ❤️</h1>
+          <p>Alejandra, escondí un poquito de nosotros en esta aventura. Sigue los corazones… al final te espera algo especial. ♥</p>
+          <div class="feature-row">
+            <span>♥ 3 vidas</span><span>☁ 4 niveles</span><span>★ 10 s de inmunidad</span><span>⚑ checkpoints</span>
+          </div>
+          <button id="playBtn" class="pixel-btn primary">COMENZAR LA AVENTURA ▶</button>
+          <p class="tiny">Una estrella a mitad de cada nivel: 10 s de protección.<br>PC: ← → / A D · Saltar: Espacio / W · Pausa: P<br>Móvil: usa los botones de la pantalla.</p>
+        </div>
+      </div>
+
+      <div id="messageScreen" class="overlay">
+        <div class="pixel-card message-card">
+          <span id="messageBadge" class="badge">NIVEL</span>
+          <h2 id="messageTitle">Nivel completado</h2>
+          <div class="chapter-art" aria-hidden="true">✦ &nbsp; ♥ &nbsp; ✦</div><p id="messageText"></p>
+          <button id="messageBtn" class="pixel-btn primary">CONTINUAR ▶</button>
+        </div>
+      </div>
+
+      <div id="pauseScreen" class="overlay">
+        <div class="pixel-card small-card">
+          <span class="badge">UN RESPIRO EN EL CAMINO</span><h2>Sin prisa, mi amor</h2>
+          <p>Descansa un poquito. Tus corazones y tu aventura te esperan justo aquí.</p>
+          <button id="resumeBtn" class="pixel-btn primary">SEGUIR ▶</button>
+        </div>
+      </div>
+
+      <div id="gameOverScreen" class="overlay">
+        <div class="pixel-card small-card">
+          <span class="badge danger">SIEMPRE HAY OTRA OPORTUNIDAD</span>
+          <h2>Un intento más ♥</h2>
+          <p>Esta vez no se pudo, pero ya conoces mejor el camino. Respira, sonríe y vuelve a intentarlo.</p>
+          <button id="retryBtn" class="pixel-btn primary">REINTENTAR ↻</button>
+        </div>
+      </div>
+
+      <div id="winScreen" class="overlay">
+        <div class="pixel-card win-card">
+          <span class="badge">CUATRO MUNDOS · UN MISMO CORAZÓN</span>
+          <div class="big-heart">♥</div>
+          <h2>Mi lugar favorito<br>siempre será contigo</h2>
+          <p>Alejandra, llegaste al final de este juego, pero a nosotros todavía nos quedan muchísimas aventuras.<br><br>Gracias por cada risa, cada abrazo y por hacer tan bonitos mis días. Preparé esto pensando en ti, para sacarte una sonrisa.<br><br><strong>En el juego seguí los corazones.<br>En la vida, el mío te eligió a ti. ♥</strong></p>
+          <div class="score-final" id="finalScore">PUNTAJE 0000</div>
+          <button id="endingAudioBtn" class="pixel-btn" hidden>ESCUCHAR FINAL ♪</button>
+          <button id="againBtn" class="pixel-btn primary">JUGAR OTRA VEZ ↻</button>
+          <div class="signature">Con todo mi cariño, Anderson ♥</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile-controls" aria-label="Controles táctiles">
+      <div class="dpad">
+        <button id="leftBtn" class="touch-btn move" aria-label="Izquierda">◀</button>
+        <button id="rightBtn" class="touch-btn move" aria-label="Derecha">▶</button>
+      </div>
+      <button id="gestureBtn" class="touch-btn move" aria-label="Saludar">✋</button>
+      <button id="jumpBtn" class="touch-btn jump" aria-label="Saltar">▲<span>SALTAR</span></button>
+    </section>
+
+    <footer class="footer-note">Aventura original de plataformas · funciona en Android, iPhone y PC</footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

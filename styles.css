@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root{
+  --ink:#1e2530;--cream:#fff7e7;--pink:#ef4777;--pink2:#ff87ae;--sky:#8ed6ff;
+  --shadow:rgba(0,0,0,.32);--brown:#7a4c28;--dark:#151922;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%;background:#111820;color:var(--ink);overscroll-behavior:none}
+body{font-family:"VT323",monospace;touch-action:none;-webkit-user-select:none;user-select:none}
+button{font:inherit;-webkit-tap-highlight-color:transparent}
+.app-shell{min-height:100svh;display:flex;flex-direction:column;background:linear-gradient(#202a36,#121820);overflow:hidden}
+.topbar{height:56px;flex:0 0 56px;display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#161c25;border-bottom:4px solid #090d12;color:#fff;z-index:5}
+.brand{font-family:"Press Start 2P";font-size:10px;line-height:1.3;text-shadow:2px 2px 0 #000}.brand span{color:#ff5e8c}
+.top-actions{display:flex;gap:7px}.icon-btn{width:40px;height:40px;border:3px solid #0d1118;background:#fff5df;color:#141821;box-shadow:3px 3px 0 #000;cursor:pointer;font-family:"Press Start 2P";font-size:13px}.icon-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #000}
+.game-stage{position:relative;flex:1 1 auto;display:grid;place-items:center;min-height:0;background:#0e141d;overflow:hidden}
+#game{display:block;width:min(100%,calc((100svh - 160px)*16/9));height:auto;max-height:100%;aspect-ratio:16/9;background:#8ed6ff;image-rendering:pixelated;image-rendering:crisp-edges;box-shadow:0 0 0 4px #090d12,0 12px 35px rgba(0,0,0,.45)}
+.overlay{position:absolute;inset:0;display:none;place-items:center;padding:18px;background:rgba(7,11,18,.58);z-index:10}.overlay.show{display:grid}
+.pixel-card{width:min(720px,90%);padding:24px;background:var(--cream);border:4px solid #222;box-shadow:8px 8px 0 var(--shadow);text-align:center}.hero-card{max-width:700px}.message-card{max-width:620px}.small-card{max-width:460px}.win-card{max-width:650px}
+.badge{display:inline-block;background:#252525;color:#fff;padding:8px 10px;font-family:"Press Start 2P";font-size:8px;line-height:1.5;margin-bottom:14px}.badge.danger{background:#8f203e}
+h1,h2{font-family:"Press Start 2P";line-height:1.45;margin:0 0 16px}h1{font-size:clamp(22px,4vw,38px)}h2{font-size:clamp(18px,3vw,28px)}h1 em{font-style:normal;color:#df3566;text-shadow:3px 3px 0 #ffc2d3}.pixel-card p{font-size:clamp(22px,3vw,30px);line-height:1.02;margin:0 auto 18px;max-width:610px}.tiny{font-size:18px!important;line-height:1.05!important;margin:14px 0 0!important;color:#574f54}
+.feature-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0}.feature-row span{border:3px solid #3d3440;padding:8px 10px;background:#f6dbe5;font-family:"Press Start 2P";font-size:7px;line-height:1.4}
+.pixel-btn{border:4px solid #221923;background:#fff;color:#221923;padding:13px 18px;box-shadow:5px 5px 0 rgba(0,0,0,.35);cursor:pointer;font-family:"Press Start 2P";font-size:9px;line-height:1.45}.pixel-btn.primary{background:#e94070;color:#fff;border-color:#70213d}.pixel-btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 rgba(0,0,0,.35)}
+.big-heart{font-size:72px;color:#e94070;text-shadow:5px 5px 0 #7b2845;animation:beat 1s steps(2,end) infinite}@keyframes beat{50%{transform:scale(1.12)}}
+.score-final{font-family:"Press Start 2P";font-size:10px;background:#201820;color:#ffd166;padding:10px;margin:12px auto 16px;max-width:310px}.signature{font-family:"Press Start 2P";font-size:7px;line-height:1.6;margin-top:14px;color:#704459}
+.mobile-controls{display:none;flex:0 0 92px;align-items:center;justify-content:space-between;padding:8px 16px max(8px,env(safe-area-inset-bottom));background:#111820;border-top:4px solid #090d12;z-index:6}
+.dpad{display:flex;gap:12px}.touch-btn{border:3px solid #080c11;background:#f3eadb;color:#111722;box-shadow:4px 4px 0 #000;touch-action:none}.touch-btn.move{width:70px;height:62px;font-family:"Press Start 2P";font-size:18px}.touch-btn.jump{width:96px;height:64px;border-color:#6e213d;background:#e94070;color:#fff;font-family:"Press Start 2P";font-size:14px}.touch-btn.jump span{display:block;font-size:6px;margin-top:5px}.touch-btn.active,.touch-btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #000;filter:brightness(.92)}
+.footer-note{height:30px;flex:0 0 30px;display:grid;place-items:center;background:#0c1118;color:#aab4c4;font-family:"Press Start 2P";font-size:6px;text-align:center;padding:0 8px}
+
+@media (pointer:coarse),(max-width:900px){
+  .mobile-controls{display:flex}
+  #game{width:min(100%,calc((100svh - 178px)*16/9));max-height:calc(100svh - 178px)}
+}
+@media (orientation:portrait) and (max-width:700px){
+  .topbar{height:52px;flex-basis:52px;padding:6px 8px}.brand{font-size:7px;max-width:52vw}.icon-btn{width:36px;height:36px;font-size:10px}
+  .game-stage{align-items:center}.mobile-controls{height:98px;flex-basis:98px;padding-inline:12px}.touch-btn.move{width:64px;height:62px}.touch-btn.jump{width:90px;height:64px}
+  #game{width:100%;height:auto;max-height:none;box-shadow:none}
+  .overlay{padding:10px}.pixel-card{width:94%;padding:16px 12px;box-shadow:5px 5px 0 var(--shadow)}h1{font-size:19px}h2{font-size:17px}.pixel-card p{font-size:20px}.feature-row{gap:6px}.feature-row span{font-size:6px;padding:6px}.pixel-btn{width:100%;font-size:8px;padding:11px}.tiny{font-size:15px!important}.big-heart{font-size:54px}
+  .footer-note{font-size:5px;height:26px;flex-basis:26px}
+}
+@media (orientation:landscape) and (max-height:520px){
+  .topbar{height:44px;flex-basis:44px}.brand{font-size:7px}.icon-btn{width:32px;height:32px;font-size:9px}
+  .mobile-controls{position:absolute;left:0;right:0;bottom:0;background:transparent;border:0;pointer-events:none;height:90px;padding:8px 14px}.touch-btn{pointer-events:auto;opacity:.82}.footer-note{display:none}
+  #game{width:auto;height:calc(100svh - 44px);max-height:none;max-width:100%}
+  .pixel-card{padding:12px}.pixel-card p{font-size:18px;margin-bottom:10px}h1{font-size:18px;margin-bottom:8px}h2{font-size:16px;margin-bottom:8px}.feature-row{margin:8px 0}.badge{margin-bottom:7px}.tiny{font-size:14px!important;margin-top:8px!important}.pixel-btn{padding:8px 12px}.big-heart{font-size:42px}
+}
+
+/* Tarjetas de historia: rosa, crema y detalles dorados. */
+.overlay{background:rgba(19,13,35,.76);overflow-y:auto;touch-action:pan-y;backdrop-filter:blur(4px)}
+.pixel-card{position:relative;border:3px solid #c17891;border-radius:18px;background:linear-gradient(145deg,#fffaf0,#ffe4ed);box-shadow:0 0 0 5px rgba(255,232,185,.18),0 18px 60px #140b244d;max-height:calc(100% - 12px);overflow-y:auto;touch-action:pan-y}
+.overlay.show .pixel-card{animation:card-in .35s ease-out both}
+.badge{color:#74424d;background:#f7dfbb;border:1px solid #d9b888;border-radius:5px;letter-spacing:1px}
+.badge.danger{background:#f4c9d6;color:#7b2748}
+.pixel-card h2{color:#84354f;font-size:clamp(15px,2.2vw,23px);line-height:1.65}
+.pixel-card p{color:#563943;line-height:1.25;font-size:clamp(20px,2.5vw,27px)}
+.pixel-card strong{color:#a32e58;font-weight:normal}
+.pixel-btn{border-radius:6px}.pixel-btn.primary{background:linear-gradient(#ec638b,#c83966)}
+.chapter-art{font-size:36px;color:#d54d7d;margin:0 0 16px;text-shadow:0 3px #fff}
+.win-card{background:radial-gradient(ellipse at top,#fff6d7,#ffe2ed 65%)}
+.signature{font-size:9px;color:#8b4762}.big-heart{color:#dd4173;text-shadow:3px 3px #f8aec7}
+@keyframes card-in{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+@media (max-height:520px){.pixel-card{max-height:calc(100% - 8px)}.win-card .big-heart{font-size:28px}.chapter-art{font-size:24px;margin-bottom:8px}.pixel-card p{font-size:18px}.signature{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.overlay.show .pixel-card,.big-heart{animation:none}}
+
+/* Ajustes para Safari/iPhone y Chrome/Android. */
+body{touch-action:manipulation}
+.app-shell{height:100vh;min-height:0;height:100dvh}
+.topbar{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+#game,.mobile-controls{touch-action:none}
+.mobile-controls{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+.pixel-card{min-height:0;-webkit-overflow-scrolling:touch}
+@media(max-width:360px){.dpad{gap:6px}.touch-btn.move{width:54px}.touch-btn.jump{width:76px}.mobile-controls{padding-inline:8px}}
+@media(orientation:landscape) and (max-height:520px){#game{height:calc(100dvh - 44px)}.mobile-controls{padding-bottom:max(8px,env(safe-area-inset-bottom))}}
